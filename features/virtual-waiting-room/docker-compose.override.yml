@@ -1,0 +1,29 @@
+services:
+  app:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: sh -c "npm install && npm run dev:server"
+    build: !reset null
+
+  worker:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: sh -c "npm install && npm run dev:worker"
+    build: !reset null
+
+  # public/src/*.ts を esbuild でバンドルして public/dist/*.js を生成し続ける。
+  # app/worker とバインドマウントを共有しているので、ここで書き出した
+  # public/dist はホスト経由で app コンテナからもそのまま配信される。
+  frontend:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: sh -c "npm install && npm run dev:public"

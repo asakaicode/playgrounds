@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>待合室 管理画面</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>仮想待合室 管理画面</h1>
+
+      <dl class="stat-grid">
+        <dt>発売状態</dt>
+        <dd id="stat-sale-started">-</dd>
+        <dt>プレキュー人数</dt>
+        <dd id="stat-prequeue-size">-</dd>
+        <dt>発行済み整理番号数</dt>
+        <dd id="stat-issued">-</dd>
+        <dt>現在の案内番号</dt>
+        <dd id="stat-serving">-</dd>
+        <dt>入場中セッション数</dt>
+        <dd id="stat-active-sessions">-</dd>
+        <dt>ワーカーモード</dt>
+        <dd id="stat-worker-mode">-</dd>
+        <dt>入場レート</dt>
+        <dd id="stat-admit-rate">-</dd>
+      </dl>
+
+      <div class="actions">
+        <button class="button" id="start-sale" type="button">発売開始（プレキューをシャッフルして採番）</button>
+        <button class="button secondary" id="reset" type="button">リセット</button>
+      </div>
+
+      <p id="admin-message"></p>
+    </main>
+    <script type="module" src="/dist/admin.js"></script>
+  </body>
+</html>

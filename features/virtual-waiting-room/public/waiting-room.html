@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>仮想待合室</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>混雑のため、しばらくお待ちください</h1>
+
+      <section id="prequeue-section" hidden>
+        <p>まもなく発売開始です。</p>
+        <p class="muted">
+          順番は発売開始時にランダムに決まります。早く開いても有利にはなりません。
+          このままお待ちください。
+        </p>
+      </section>
+
+      <section id="waiting-section">
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-bar"></div>
+        </div>
+        <dl class="stat-grid">
+          <dt>あなたの整理番号</dt>
+          <dd id="position">-</dd>
+          <dt>前に並んでいる人数</dt>
+          <dd id="people-ahead">-</dd>
+          <dt>現在の案内番号</dt>
+          <dd id="serving">-</dd>
+          <dt>推定待ち時間</dt>
+          <dd id="eta">-</dd>
+        </dl>
+      </section>
+
+      <p id="reconnecting" hidden>再接続中です…</p>
+    </main>
+    <script type="module" src="/dist/waiting-room.js"></script>
+  </body>
+</html>

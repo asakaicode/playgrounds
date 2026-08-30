@@ -23,7 +23,11 @@ docker compose up --build
 - Redis: `localhost:6379`
 
 `docker-compose.override.yml` が自動的に適用され、開発時はソースをマウントして
-`tsx watch` で起動します（型チェックは起動をブロックしません）。
+`tsx watch` で起動します（型チェックは起動をブロックしません）。このとき
+`frontend` サービスが `public/src/*.ts` を esbuild でバンドルし続けるので、
+待合室 UI・管理画面の JS（`public/dist/*.js`）はコンテナ起動から数秒で
+自動生成されます。起動直後にボタンが反応しない場合は、`frontend` サービスの
+初回 `npm install` が終わっていない可能性があるので少し待ってください。
 
 ## 検証手順（5分で挙動を確認する）
 
